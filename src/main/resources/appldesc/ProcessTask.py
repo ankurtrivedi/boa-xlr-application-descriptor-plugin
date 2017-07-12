@@ -29,7 +29,7 @@ def new_variable(name, value, type, required=False, label=None, description=None
 
 def create_variable(variableName, variableValue, variableType):
     if variableName in release.getVariablesByKeys():
-        print "Variable [%s] already present. Doing nothing" % variableName
+        print "Variable [%s] already present." % variableName
         var = release.getVariablesByKeys()[variableName]
         var.value = variableValue
         releaseApi.updateVariable(var)
