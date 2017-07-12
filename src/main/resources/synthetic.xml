@@ -34,6 +34,7 @@
         <property name="applicationVars" category="input" kind="list_of_string" label="Application Variables"
                   description="For Example: applicationName, lineOfBusiness" required="true"/>
         <property name="success" category="output" kind="boolean" label="Success"/>
+        <property name="contentType" category="input" kind="string" hidden="false" default="*/*"/>
     </type>
 
     <!--

@@ -46,7 +46,7 @@ if server is None:
     sys.exit(1)
 
 request = HttpRequest(server, None , None)
-response = request.get(uri, contentType='application/json')
+response = request.get(uri, contentType=contentType)
 
 if not response.isSuccessful():
     print "Failed to retrieve app descriptor from %s/%s" % (server['url'], uri)
