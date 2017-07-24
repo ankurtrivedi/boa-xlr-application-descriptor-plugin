@@ -1,0 +1,48 @@
+{
+  "appDesc" : {
+  "infrastructure":
+                    [
+                      { "envName" :"dev",
+                       "blueprint_id" : "sdlc-rhel6-CICD-XLR1",
+                        "blueprint_url" : "https://code.td.com/users/doytcn2/repos/sdlc-fake-nexus/raw/franks-red-hot-sdlc.tar.gz",
+                        "tenant" : "C5_PLATFORM",
+                        "enviro" : "dev",
+                        "blueprint_inputs_url" : "https://code.td.com/users/doytcn2/repos/sdlc-fake-nexus/raw/rhel6-sldc-inputs.json",
+                        "num_deployments" : "1",
+                        "cloud_venue" :""
+                       } ,
+                      {"envName" :"sit",
+                       "blueprint_id" : "sdlc-rhel6-CICD-XLR1",
+                        "blueprint_url" : "https://code.td.com/users/doytcn2/repos/sdlc-fake-nexus/raw/franks-red-hot-sdlc.tar.gz",
+                        "tenant" : "C5_PLATFORM",
+                        "enviro" : "dev",
+                        "blueprint_inputs_url" : "https://code.td.com/users/doytcn2/repos/sdlc-fake-nexus/raw/rhel6-sldc-inputs.json",
+                        "num_deployments" : "1",
+                        "cloud_venue" :""
+                      },
+                      { "envName" :"pat",
+                       "blueprint_id" : "sdlc-rhel6-CICD-XLR1",
+                        "blueprint_url" : "https://code.td.com/users/doytcn2/repos/sdlc-fake-nexus/raw/franks-red-hot-sdlc.tar.gz",
+                        "tenant" : "C5_PLATFORM",
+                        "enviro" : "dev",
+                        "blueprint_inputs_url" : "https://code.td.com/users/doytcn2/repos/sdlc-fake-nexus/raw/rhel6-sldc-inputs.json",
+                        "num_deployments" : "1",
+                        "cloud_venue" :""
+                      },
+                      {"envName" :"prod",
+                       "blueprint_id" : "sdlc-rhel6-CICD-XLR1",
+                        "blueprint_url" : "https://code.td.com/users/doytcn2/repos/sdlc-fake-nexus/raw/franks-red-hot-sdlc.tar.gz",
+                        "tenant" : "C5_PLATFORM",
+                        "enviro" : "dev",
+                        "blueprint_inputs_url" : "https://code.td.com/users/doytcn2/repos/sdlc-fake-nexus/raw/rhel6-sldc-inputs.json",
+                        "num_deployments" : "1",
+                        "cloud_venue" :""
+                      }
+                    ],
+  "application": {
+    "applicationName": "abc",
+    "lineofBusiness": "xyz",
+    "version": "abc"
+  }
+}
+}
