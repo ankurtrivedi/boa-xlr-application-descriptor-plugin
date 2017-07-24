@@ -12,4 +12,5 @@ The td-xlr-application-descriptor-plugin is a XL Release plugin that allows to p
 
 This plugin requires XLR 4.8 or above. It has been tested on 7.0.
 
-
+# Sample JSON #
+repoMetadata.json
