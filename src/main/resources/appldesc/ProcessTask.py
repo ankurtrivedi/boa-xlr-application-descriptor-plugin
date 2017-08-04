@@ -31,7 +31,7 @@ def create_variable(variableName, variableValue, variableType):
     if variableName in release.getVariablesByKeys():
         print "Variable [%s] already present." % variableName
         var = release.getVariablesByKeys()[variableName]
-        var.value = variableValue
+        var.setValue(variableValue)
         releaseApi.updateVariable(var)
     else:
         print "Adding [%s] variable" % variableName
@@ -56,6 +56,7 @@ else:
     jsonData= json.loads(response.getResponse())
     infrastructure= jsonData['appDesc']['infrastructure']
     application = jsonData['appDesc']['application']
+    reuseInfraVal = jsonData['appDesc']['reuseInfra']
 
     for infra in infrastructure:
         if infra['envName'] in infraVars:
@@ -63,6 +64,8 @@ else:
     for key in application.keys():
         if key in applicationVars:
             create_variable(key, application[key], STRING_VARIABLE_TYPE)
+
+    create_variable('reuseInfra',reuseInfraVal,STRING_VARIABLE_TYPE)
 
     print "Retrieved app Descriptor from %s/%s" % (server['url'], uri)
 
