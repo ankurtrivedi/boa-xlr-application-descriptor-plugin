@@ -54,9 +54,10 @@ if not response.isSuccessful():
     sys.exit(1)
 else:
     jsonData= json.loads(response.getResponse())
-    infrastructure= jsonData['appDesc']['infrastructure']
-    application = jsonData['appDesc']['application']
-    reuseInfraVal = jsonData['appDesc']['reuseInfra']
+    infrastructure= jsonData['CDProperties']['infrastructure']
+    application = jsonData['CDProperties']['application']
+    applicationPackaging = jsonData['CDProperties']['applicationPackaging']
+    reuseInfraVal = jsonData['CDProperties']['reuseInfra']
 
     for infra in infrastructure:
         if infra['envName'] in infraVars:
@@ -66,6 +67,8 @@ else:
             create_variable(key, application[key], STRING_VARIABLE_TYPE)
 
     create_variable('reuseInfra',reuseInfraVal,STRING_VARIABLE_TYPE)
+
+    create_variable('DAR',applicationPackaging,MAP_VARIABLE_TYPE)
 
     print "Retrieved app Descriptor from %s/%s" % (server['url'], uri)
 
