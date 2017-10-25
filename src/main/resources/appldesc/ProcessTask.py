@@ -9,7 +9,8 @@
 #
 
 import sys
-import json
+#import json
+import yaml
 from xlrelease.HttpRequest import HttpRequest
 from com.xebialabs.xlrelease.api.v1.forms import Variable
 
@@ -53,7 +54,7 @@ if not response.isSuccessful():
     response.errorDump()
     sys.exit(1)
 else:
-    jsonData= json.loads(response.getResponse())
+    jsonData= yaml.load(response.getResponse())
     infrastructure= jsonData['CDProperties']['infrastructure']
     application = jsonData['CDProperties']['application']
     applicationPackaging = jsonData['CDProperties']['applicationPackaging']
