@@ -18,7 +18,7 @@
 
     <!--
         #######################################################################################################################
-        #    Application Descriptor JSON Task
+        #    Component Application Descriptor JSON Task
         #######################################################################################################################
     -->
     <type type="appldesc.ProcessTask" extends="xlrelease.PythonScript">
@@ -33,6 +33,24 @@
                   description="For Example: dev, sit, pat, prod" required="true"/>
         <property name="applicationVars" category="input" kind="list_of_string" label="Application Variables"
                   description="For Example: applicationName, lineOfBusiness" required="true"/>
+        <property name="success" category="output" kind="boolean" label="Success"/>
+        <property name="contentType" category="input" kind="string" hidden="false" default="*/*"/>
+    </type>
+
+
+    <!--
+       #######################################################################################################################
+       #    Project Application Descriptor JSON Task
+       #######################################################################################################################
+   -->
+    <type type="appldesc.ProcessProjectDescriptor" extends="xlrelease.PythonScript">
+        <property name="iconLocation" default="appldesc/td-logo-small.jpg" hidden="true"/>
+        <property name="scriptLocation" default="appldesc/ProcessProjectDescriptor.py" hidden="true"/>
+
+        <property name="server" kind="ci" referenced-type="appldesc.Server" category="input" label="Server"
+                  description="SCM Server to connect" required="true"/>
+        <property name="uri" category="input" label="URI" description="URI for the Application Descriptor"
+                  required="true"/>
         <property name="success" category="output" kind="boolean" label="Success"/>
         <property name="contentType" category="input" kind="string" hidden="false" default="*/*"/>
     </type>

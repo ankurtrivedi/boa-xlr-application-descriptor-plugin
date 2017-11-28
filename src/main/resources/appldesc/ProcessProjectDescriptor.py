@@ -55,21 +55,31 @@ if not response.isSuccessful():
     sys.exit(1)
 else:
     jsonData= yaml.load(response.getResponse())
-    infrastructure= jsonData['CDProperties']['infrastructure']
-    application = jsonData['CDProperties']['application']
-    applicationPackaging = jsonData['CDProperties']['applicationPackaging']
+    project = jsonData['CDProperties']['project']
+    sitinfrastructure= jsonData['CDProperties']['sitinfrastructure']
+    patinfrastructure= jsonData['CDProperties']['patinfrastructure']
+    prodinfrastructure= jsonData['CDProperties']['prodinfrastructure']
+    #applicationPackaging = jsonData['CDProperties']['applicationPackaging']
     #reuseInfraVal = jsonData['CDProperties']['reuseInfra']
 
-    for infra in infrastructure:
-        if infra['envName'] in infraVars:
-            create_variable(infra['envName'], infra, MAP_VARIABLE_TYPE)
-    for key in application.keys():
-        if key in applicationVars:
-            create_variable(key, application[key], STRING_VARIABLE_TYPE)
+    for key in project.keys():
+        create_variable(key, project[key], STRING_VARIABLE_TYPE)
+
+
+    for infra in sitinfrastructure:
+        create_variable(infra['envName'], infra, MAP_VARIABLE_TYPE)
+
+
+    for infra in patinfrastructure:
+        create_variable(infra['envName'], infra, MAP_VARIABLE_TYPE)
+
+
+    for infra in prodinfrastructure:
+        create_variable(infra['envName'], infra, MAP_VARIABLE_TYPE)
 
     #create_variable('reuseInfra',reuseInfraVal,STRING_VARIABLE_TYPE)
 
-    create_variable('DAR',applicationPackaging,MAP_VARIABLE_TYPE)
+    #create_variable('DAR',applicationPackaging,MAP_VARIABLE_TYPE)
 
     print "Retrieved app Descriptor from %s/%s" % (server['url'], uri)
 
