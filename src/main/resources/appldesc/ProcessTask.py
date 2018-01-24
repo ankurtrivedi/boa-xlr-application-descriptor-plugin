@@ -57,11 +57,11 @@ else:
     jsonData= yaml.load(response.getResponse())
     infrastructure= jsonData['CDProperties']['infrastructure']
     application = jsonData['CDProperties']['application']
-    deploymentTemplate = jsonData['CDProperties']['deploymentTemplate']
+    deploymentParametersCommon = jsonData['CDProperties']['deploymentParametersCommon']
     deploymentParameters = jsonData['CDProperties']['deploymentParameters']
     if deploymentParameters is not None:
-        for env in deploymentParameters:
-            create_variable(env['dictName'], env, MAP_VARIABLE_TYPE)
+        for env in deploymentParameters.keys():
+            create_variable(env+'DeploymentParams', deploymentParameters[env], MAP_VARIABLE_TYPE)
 
     for infra in infrastructure:
         if infra['envName'] in infraVars:
@@ -72,7 +72,7 @@ else:
 
     #create_variable('reuseInfra',reuseInfraVal,STRING_VARIABLE_TYPE)
 
-    create_variable('DAR',deploymentTemplate,MAP_VARIABLE_TYPE)
+    create_variable('DAR',deploymentParametersCommon,MAP_VARIABLE_TYPE)
 
     print "Retrieved app Descriptor from %s/%s" % (server['url'], uri)
 
