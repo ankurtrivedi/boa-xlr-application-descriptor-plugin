@@ -9,13 +9,14 @@
 #
 
 import sys
-#import json
+import json
 import yaml
 from xlrelease.HttpRequest import HttpRequest
 from com.xebialabs.xlrelease.api.v1.forms import Variable
 
 MAP_VARIABLE_TYPE = 'xlrelease.MapStringStringVariable'
 STRING_VARIABLE_TYPE = 'xlrelease.StringVariable'
+LIST_VARIABLE_TYPE = 'xlrelease.ListStringVariable'
 
 def new_variable(name, value, type, required=False, label=None, description=None):
     # setting a dummy value since we can only pass a string here
@@ -48,31 +49,25 @@ if server is None:
 
 request = HttpRequest(server, None , None)
 response = request.get(uri, contentType=contentType)
+jsonData = {}
 
 if not response.isSuccessful():
     print "Failed to retrieve app descriptor from %s/%s" % (server['url'], uri)
     response.errorDump()
     sys.exit(1)
 else:
-    jsonData= yaml.load(response.getResponse())
-    infrastructure= jsonData['CDProperties']['infrastructure']
-    application = jsonData['CDProperties']['application']
-    deploymentParametersCommon = jsonData['CDProperties']['deploymentParametersCommon']
-    deploymentParameters = jsonData['CDProperties']['deploymentParameters']
-    if deploymentParameters is not None:
-        for env in deploymentParameters.keys():
-            create_variable(env+'DeploymentParams', deploymentParameters[env], MAP_VARIABLE_TYPE)
+    jsonData= json.loads(response.getResponse())
 
-    for infra in infrastructure:
-        if infra['envName'] in infraVars:
-            create_variable(infra['envName'], infra, MAP_VARIABLE_TYPE)
-    for key in application.keys():
-        if key in applicationVars:
-            create_variable(key, application[key], STRING_VARIABLE_TYPE)
+for var in jsonData:
+    if type(jsonData[var]) is list:
+        print "%s is String Variable" % (var)
+        create_variable(var, jsonData[var], LIST_VARIABLE_TYPE)
+    elif type(jsonData[var]) is dict:
+        print "%s is dict Variable" % (var)
+        create_variable(var, jsonData[var], MAP_VARIABLE_TYPE)
+    else:
+        print "%s is list Variable" % (var)
+        create_variable(var, jsonData[var], STRING_VARIABLE_TYPE )
 
-    #create_variable('reuseInfra',reuseInfraVal,STRING_VARIABLE_TYPE)
-
-    create_variable('DAR',deploymentParametersCommon,MAP_VARIABLE_TYPE)
-
-    print "Retrieved app Descriptor from %s/%s" % (server['url'], uri)
+print "Retrieved app Descriptor from %s/%s" % (server['url'], uri)
 
