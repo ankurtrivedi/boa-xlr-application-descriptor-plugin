@@ -7,6 +7,7 @@
 	},
 	"list": ["123", "123"],
     "new" : "somethingNew",
-    "newVar" : "12345"
+    "newVar" : "12345",
+    "newVar1" : "1234"
 
 }
