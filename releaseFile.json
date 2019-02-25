@@ -6,6 +6,7 @@
 		"ankur": "123"
 	},
 	"list": ["123", "123"],
-    "new" : "somethingNew"
+    "new" : "somethingNew",
+    "newVar" : "12345"
 
 }
