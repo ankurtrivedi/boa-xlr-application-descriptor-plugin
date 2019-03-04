@@ -10,7 +10,7 @@
 
 import sys
 import json
-import yaml
+#import yaml
 from xlrelease.HttpRequest import HttpRequest
 from com.xebialabs.xlrelease.api.v1.forms import Variable
 
@@ -29,19 +29,29 @@ def new_variable(name, value, type, required=False, label=None, description=None
         variable.setDescription(description)
     return variable
 
-def create_variable(variableName, variableValue, variableType):
+def update_template_variable(variableName, variableValue, variableType,templateId):
+    for variable in templateApi.getVariables(templateId):
+        print variable.getKey()
+        if variable.getKey()== variableName:
+            print "Variable [%s] already present. Updating" % variable.getKey()
+            if variableType == LIST_VARIABLE_TYPE:
+                print "Variable value for list [%s]" % variableValue
+                variable.setValue(variableValue)
+            elif variableType == MAP_VARIABLE_TYPE:
+                print "Variable value for map [%s]" % variableValue
+                variable.setValue(variableValue)
+            else:
+                print "Variable value for string [%s]" % variableValue
+                variable.setValue(variableValue)
+
+            templateApi.updateVariable(variable)
+
+def update_release_variable(variableName, variableValue, variableType):
     if variableName in release.getVariablesByKeys():
         print "Variable [%s] already present." % variableName
         var = release.getVariablesByKeys()[variableName]
         var.setValue(variableValue)
         releaseApi.updateVariable(var)
-    else:
-        print "Adding [%s] variable" % variableName
-        var = new_variable(variableName, variableValue,
-                           variableType,
-                           False, variableName,
-                           'The variable %s' % variableName)
-        releaseApi.createVariable(release.getId(), var)
 
 if server is None:
     print "No server provided."
@@ -58,16 +68,51 @@ if not response.isSuccessful():
 else:
     jsonData= json.loads(response.getResponse())
 
+templateId = getCurrentRelease().getOriginTemplateId()
+print templateId
+
+# Update template variables
+print "#######################################"
+print "Updating Template Variables"
+
 for var in jsonData:
     if type(jsonData[var]) is list:
-        print "%s is String Variable" % (var)
-        create_variable(var, jsonData[var], LIST_VARIABLE_TYPE)
+        print "%s is list Variable" % (var)
+        print "Value from Bitbucket is %s" % (jsonData[var])
+        update_template_variable(var, jsonData[var], LIST_VARIABLE_TYPE,templateId)
     elif type(jsonData[var]) is dict:
         print "%s is dict Variable" % (var)
-        create_variable(var, jsonData[var], MAP_VARIABLE_TYPE)
+        print "Value from Bitbucket is %s" % (jsonData[var])
+        update_template_variable(var, jsonData[var], MAP_VARIABLE_TYPE,templateId)
     else:
+        print "%s is string Variable" % (var)
+        print "Value from Bitbucket is %s" % (jsonData[var])
+        update_template_variable(var, jsonData[var], STRING_VARIABLE_TYPE,templateId )
+
+print "Updated Template Variables"
+print "#######################################"
+
+# Update release variables
+print "#######################################"
+print "Updating Release Variables"
+
+for var in jsonData:
+    if type(jsonData[var]) is list:
         print "%s is list Variable" % (var)
-        create_variable(var, jsonData[var], STRING_VARIABLE_TYPE )
+        print "Value from Bitbucket is %s" % (jsonData[var])
+        update_release_variable(var, jsonData[var], LIST_VARIABLE_TYPE)
+    elif type(jsonData[var]) is dict:
+        print "%s is dict Variable" % (var)
+        print "Value from Bitbucket is %s" % (jsonData[var])
+        update_release_variable(var, jsonData[var], MAP_VARIABLE_TYPE)
+    else:
+        print "%s is string Variable" % (var)
+        print "Value from Bitbucket is %s" % (jsonData[var])
+        update_release_variable(var, jsonData[var], STRING_VARIABLE_TYPE)
+
+print "Updated Release Variables"
+print "#######################################"
+
 
 print "Retrieved app Descriptor from %s/%s" % (server['url'], uri)
 
