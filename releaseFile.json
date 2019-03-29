@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
 	"litmus_env_to_phase_mapping": {},
 	"ArtifactoryAPIkey": null,
 	"ready_to_release_user_stories": {},
@@ -156,17 +155,4 @@
 	"jira_userpassword_to_query_update_project_stories": null,
 	"sonarqube_duplicated_blocks": null,
 	"artifact_build_version_ciurl_var": null
-=======
-	"abc": "12345",
-	"ankur": "123",
-	"map": {
-		"abc": "123",
-		"ankur": "123"
-	},
-	"list": ["123", "123"],
-    "new" : "somethingNew",
-    "newVar" : "12345",
-    "newVar1" : "1234"
-
->>>>>>> 32105cb2a561b4d7533a3cdd9b6d488189e914fc
 }
