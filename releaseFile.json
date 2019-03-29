@@ -154,8 +154,7 @@
 	"ARTIFACTORY-SECTION-END": "###################################",
 	"jira_userpassword_to_query_update_project_stories": null,
 	"sonarqube_duplicated_blocks": null,
-	"artifact_build_version_ciurl_var": null
-
+	"artifact_build_version_ciurl_var": null,
 	"abc": "12345",
 	"ankur": "123",
 	"map": {
