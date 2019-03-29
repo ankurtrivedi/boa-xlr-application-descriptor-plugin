@@ -26,9 +26,14 @@
         <property name="expirationTime" kind="integer" hidden="true" default="0" description="Expiration time for a tile cache (in seconds)."/>
         <property name="iconLocation" default="appldesc/boa-logo-small.jpg" hidden="true"/>
         <property name="scriptLocation" default="appldesc/ProcessTask.py" hidden="true"/>
-
         <property name="server" kind="ci" referenced-type="appldesc.Server" category="input" label="Server"
                   description="SCM Server to connect" required="true"/>
+        <property name="username" category="input" required="false"
+                  description="Overrides the username used to connect to the server."/>
+        <property name="password" password="true" required="false" category="input"
+                  description="Overrides the password used to connect to the server."/>
+
+
         <property name="uri" category="input" label="URI" description="URI for the Application Descriptor"
                   required="true"/>
         <property name="success" category="output" kind="boolean" label="Success"/>
