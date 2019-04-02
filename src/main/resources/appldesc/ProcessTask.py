@@ -57,7 +57,7 @@ if server is None:
     print "No server provided."
     sys.exit(1)
 
-request = HttpRequest(server, None , None)
+request = HttpRequest(server, username, password)
 response = request.get(uri, contentType=contentType)
 jsonData = {}
 
