@@ -1,60 +1,70 @@
 {
-	"componentMetadata": {
-		"lob_name": "CSWT",
-		"deployer_id_to_trigger_nonprod_tower_jobtemplate": "abc",
-		"deployer_id_to_trigger_prod_tower_jobtemplate": "abc",
-		"ansible_Extras": {},
-		"artifactory_build_repo": "libs-release-local-generic",
-		"enable_auto_user_stories_status_update": "No",
-		"jira_userid_to_query_update_project_stories": "",
-		"xlr_remedy_integration": "No",
-		"Sonar_Component_Key": "ITRACK-project",
-		"os_platfrom": "Linux"
-	},
-	"phaseMetadata":[{
-			"environmentType": "DEV",
-			"enablePreDeployGate": "Yes",
-			"enablePostDeployGate": "Yes",
-			"notificationDG": "karthiga_nanjan.premkumar@xyz.com"
-		},
-		{
-			"environmentType": "LLE",
-			"enablePreDeployGate": "Yes",
-			"enablePostDeployGate": "Yes",
-			"notificationDG": "karthiga_nanjan.premkumar@xyz.com"
-		},
-		{
-			"environmentType": "PROD",
-			"notificationDG": "karthiga_nanjan.premkumar@xyz.com"
-	}],
-	"environmentMetadata": [{
-			"environmentName": "CIT1",
-			"environmentType": "DEV",
-			"job_template": "ETASC/dee_poc_delivery/dev",
-			"inventory": "DMZ/Windows",
-			"envs_to_sonar_metrics_check_mapping": "No",
-			"litmus_env_to_enable_automated_test_mapping": "No",
-			"litmus_env_to_test_component_mapping": "SMKP004",
-			"litmus_env_to_litmus_test_url_mapping": "true"
-		},
-		{
-			"environmentName": "UAT1",
-			"environmentType": "LLE",
-			"job_template": "ETASC/dee_poc_delivery/lle",
-			"inventory": "DMZ/Windows",
-			"envs_to_sonar_metrics_check_mapping": "No",
-			"litmus_env_to_enable_automated_test_mapping": "No",
-			"litmus_env_to_test_component_mapping": "SMKP004",
-			"litmus_env_to_litmus_test_url_mapping": "true"
-		},
-		{
-			"environmentName": "PROD1",
-			"environmentType": "PROD",
-			"job_template": "ETASC/dee_poc_delivery/prod",
-			"inventory": "DMZ/Windows",
-			"envs_to_sonar_metrics_check_mapping": "No",
-			"litmus_env_to_enable_automated_test_mapping": "No",
-			"litmus_env_to_test_component_mapping": "SMKP004",
-			"litmus_env_to_litmus_test_url_mapping": "true"
-		} ]
+    "component": {
+        "lobName": "CSWT",
+        "releaseEnvironments": ["CIT1", "UAT1", "PROD1"],
+        "towerDeployerIdNonProd": "zkdtwdq",
+        "towerDeployerIdProd": "zkdtwdq",
+        "artifactoryBuildRepo": "libs-release-local-generic",
+        "jiraEnableStatusUpdates": false,
+        "jiraUserId": "",
+        "remedyEnableIntegration": false,
+        "sonarComponentKey": "ITRACK-itrack-25561-project",
+        "osPlatform": "Linux"
+    },
+    "phases":[
+        {
+            "phaseType": "DEV",
+            "phaseEnablePreDeployGate": false,
+            "phaseEnablePostDeployGate": false,
+            "phaseNotificationDg": "dg.sdm-xlr@bankofamerica.com"
+        },
+        {
+            "phaseType": "LLE",
+            "phaseEnablePreDeployGate": false,
+            "phaseEnablePostDeployGate": false,
+            "phaseNotificationDg": "dg.sdm-xlr@bankofamerica.com"
+        },
+        {
+            "phaseType": "PROD",
+            "phaseNotificationDg": "dg.sdm-xlr@bankofamerica.com"
+        }      
+    ],
+    "environments": [
+        {
+            "environmentName": "CIT1",
+            "phaseType": "DEV",
+            "sonarEnableMetricsCheck": true,
+            "towerAnsibleExtras": "",
+            "towerJobTemplate": "ETASC/dee_poc_delivery",
+            "towerInventory": "DMZ/Windows_Dev",
+            "towerMachineCredential": "ETASC/dee_poc_delivery/dev",
+            "litmusEnableFunctionalTests": false,
+            "litmusComponentName": "Compo1",
+            "litmusTargetApplicationUrl": "http://dev-system-test",
+        },
+        {
+            "environmentName": "UAT_Environment",
+            "phaseType": "LLE",
+            "sonarEnableMetricsCheck": true,
+            "towerAnsibleExtras": "",
+            "towerJobTemplate": "ETASC/dee_poc_delivery",
+            "towerInventory": "DMZ/Windows_LLE",
+            "towerMachineCredential": "ETASC/dee_poc_delivery/LLE",
+            "litmusEnableFunctionalTests": false,
+            "litmusComponentName": "Compo1",
+            "litmusTargetApplicationUrl": "http://lle-system-test",
+        },
+        {
+            "environmentName": "PA Datacenter",
+            "phaseType": "PROD",
+            "sonarEnableMetricsCheck": true,
+            "towerAnsibleExtras": "",
+            "towerJobTemplate": "ETASC/dee_poc_delivery",
+            "towerInventory": "DMZ/Windows_PROD",
+            "towerMachineCredential": "ETASC/dee_poc_delivery/PROD",
+            "litmusEnableFunctionalTests": true,
+            "litmusComponentName": "Compo1",
+            "litmusTargetApplicationUrl": "http://prod-system-test",
+        }      
+    ]
 }
