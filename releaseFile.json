@@ -40,7 +40,7 @@
             "towerMachineCredential": "ETASC/dee_poc_delivery/dev",
             "litmusEnableFunctionalTests": false,
             "litmusComponentName": "Compo1",
-            "litmusTargetApplicationUrl": "http://dev-system-test",
+            "litmusTargetApplicationUrl": "http://dev-system-test"
         },
         {
             "environmentName": "UAT_Environment",
@@ -52,7 +52,7 @@
             "towerMachineCredential": "ETASC/dee_poc_delivery/LLE",
             "litmusEnableFunctionalTests": false,
             "litmusComponentName": "Compo1",
-            "litmusTargetApplicationUrl": "http://lle-system-test",
+            "litmusTargetApplicationUrl": "http://lle-system-test"
         },
         {
             "environmentName": "PA Datacenter",
@@ -64,7 +64,7 @@
             "towerMachineCredential": "ETASC/dee_poc_delivery/PROD",
             "litmusEnableFunctionalTests": true,
             "litmusComponentName": "Compo1",
-            "litmusTargetApplicationUrl": "http://prod-system-test",
+            "litmusTargetApplicationUrl": "http://prod-system-test"
         }      
     ]
 }
