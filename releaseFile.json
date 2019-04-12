@@ -43,7 +43,7 @@
             "litmusTargetApplicationUrl": "http://dev-system-test"
         },
         {
-            "environmentName": "UAT_Environment",
+            "environmentName": "UAT1",
             "phaseType": "LLE",
             "sonarEnableMetricsCheck": true,
             "towerAnsibleExtras": "",
@@ -55,7 +55,7 @@
             "litmusTargetApplicationUrl": "http://lle-system-test"
         },
         {
-            "environmentName": "PA Datacenter",
+            "environmentName": "PROD1",
             "phaseType": "PROD",
             "sonarEnableMetricsCheck": true,
             "towerAnsibleExtras": "",
