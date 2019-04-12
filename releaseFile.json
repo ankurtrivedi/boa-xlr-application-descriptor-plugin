@@ -16,17 +16,17 @@
             "phaseType": "DEV",
             "phaseEnablePreDeployGate": false,
             "phaseEnablePostDeployGate": false,
-            "phaseNotificationDg": "dg.sdm-xlr@bankofamerica.com"
+            "phaseNotificationDg": "dg.sdm-xlr@abc.com"
         },
         {
             "phaseType": "LLE",
             "phaseEnablePreDeployGate": false,
             "phaseEnablePostDeployGate": false,
-            "phaseNotificationDg": "dg.sdm-xlr@bankofamerica.com"
+            "phaseNotificationDg": "dg.sdm-xlr@abc.com"
         },
         {
             "phaseType": "PROD",
-            "phaseNotificationDg": "dg.sdm-xlr@bankofamerica.com"
+            "phaseNotificationDg": "dg.sdm-xlr@abc.com"
         }      
     ],
     "environments": [
