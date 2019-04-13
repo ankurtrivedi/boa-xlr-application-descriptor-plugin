@@ -16,17 +16,17 @@
             "phaseType": "DEV",
             "phaseEnablePreDeployGate": false,
             "phaseEnablePostDeployGate": false,
-            "phaseNotificationDg": "dg.sdm-xlr@bankofamerica.com"
+            "phaseNotificationDg": "dg.sdm-xlr@abc.com"
         },
         {
             "phaseType": "LLE",
             "phaseEnablePreDeployGate": false,
             "phaseEnablePostDeployGate": false,
-            "phaseNotificationDg": "dg.sdm-xlr@bankofamerica.com"
+            "phaseNotificationDg": "dg.sdm-xlr@abc.com"
         },
         {
             "phaseType": "PROD",
-            "phaseNotificationDg": "dg.sdm-xlr@bankofamerica.com"
+            "phaseNotificationDg": "dg.sdm-xlr@abc.com"
         }      
     ],
     "environments": [
@@ -40,10 +40,10 @@
             "towerMachineCredential": "ETASC/dee_poc_delivery/dev",
             "litmusEnableFunctionalTests": false,
             "litmusComponentName": "Compo1",
-            "litmusTargetApplicationUrl": "http://dev-system-test",
+            "litmusTargetApplicationUrl": "http://dev-system-test"
         },
         {
-            "environmentName": "UAT_Environment",
+            "environmentName": "UAT1",
             "phaseType": "LLE",
             "sonarEnableMetricsCheck": true,
             "towerAnsibleExtras": "",
@@ -52,10 +52,10 @@
             "towerMachineCredential": "ETASC/dee_poc_delivery/LLE",
             "litmusEnableFunctionalTests": false,
             "litmusComponentName": "Compo1",
-            "litmusTargetApplicationUrl": "http://lle-system-test",
+            "litmusTargetApplicationUrl": "http://lle-system-test"
         },
         {
-            "environmentName": "PA Datacenter",
+            "environmentName": "PROD1",
             "phaseType": "PROD",
             "sonarEnableMetricsCheck": true,
             "towerAnsibleExtras": "",
@@ -64,7 +64,7 @@
             "towerMachineCredential": "ETASC/dee_poc_delivery/PROD",
             "litmusEnableFunctionalTests": true,
             "litmusComponentName": "Compo1",
-            "litmusTargetApplicationUrl": "http://prod-system-test",
+            "litmusTargetApplicationUrl": "http://prod-system-test"
         }      
     ]
 }
