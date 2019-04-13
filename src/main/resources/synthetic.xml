@@ -40,6 +40,23 @@
         <property name="contentType" category="input" kind="string" hidden="false" default="*/*"/>
     </type>
 
+    <type type="appldesc.GetFile" extends="xlrelease.PythonScript" description="Retrieves the content of a file via HTTP GET.">
+        <!-- input -->
+        <property name="server" kind="ci" referenced-type="appldesc.Server" category="input" label="Server"
+                  description="SCM Server to connect" required="true"/>
+        <property name="username" category="input" required="false"
+                  description="Overrides the username used to connect to the server."/>
+        <property name="password" password="true" required="false" category="input"
+                  description="Overrides the password used to connect to the server."/>
+        <property name="uri" category="input" label="URI" description="URI for the Application Descriptor"
+                  required="true"/>
+        <property name="contentType" category="input" kind="string" hidden="false" default="*/*"/>
+        <property name="iconLocation" default="appldesc/boa-logo-small.jpg" hidden="true"/>
+
+        <!-- output variables -->
+        <property name="fileContent" category="output" required="false" description="Content of the file."/>
+    </type>
+
     <!--
         #######################################################################################################################
         #   Application Descriptor Server Configuration
