@@ -22,14 +22,14 @@ if server is None:
     print "No server provided."
     sys.exit(1)
 
-host = { 'url': server }
-request = HttpRequest(host, username, password)
+#host = { 'url': server }
+request = HttpRequest(server, username, password)
 response = request.get(uri, contentType=contentType)
 
 if not response.isSuccessful():
-    print "Failed to retrieve file from %s/%s" % (server, uri)
+    print "Failed to retrieve file from %s/%s" % (server['url'], uri)
     response.errorDump()
     sys.exit(1)
 else:
     fileContent = response.getResponse()
-    print "Retrieved file content from %s/%s" % (server, uri)
+    print "Retrieved file content from %s/%s" % (server['url'], uri)
