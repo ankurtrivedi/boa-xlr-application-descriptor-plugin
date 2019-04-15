@@ -1,4 +1,4 @@
 {
 	"integrated_release_environments": ["CIT1", "UAT1", "PROD1"],
-	"release_components": ["Release branch master template-app3", "Release branch master template-app4"]
+	"release_components": ["Release branch master template-app3:1", "Release branch master template-app4:2"]
 }
