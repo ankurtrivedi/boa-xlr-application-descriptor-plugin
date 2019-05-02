@@ -14,8 +14,8 @@
     "phases":[
         {
             "phaseType": "DEV",
-            "phaseEnablePreDeployGate": false,
-            "phaseEnablePostDeployGate": false,
+            "phaseEnablePreDeployGate": true,
+            "phaseEnablePostDeployGate": true,
             "phaseNotificationDg": "dg.sdm-xlr@abc.com"
         },
         {
