@@ -14,14 +14,14 @@
     "phases":[
         {
             "phaseType": "DEV",
-            "phaseEnablePreDeployGate": true,
-            "phaseEnablePostDeployGate": true,
+            "phaseEnablePreDeployGate": True,
+            "phaseEnablePostDeployGate": True,
             "phaseNotificationDg": "dg.sdm-xlr@abc.com"
         },
         {
             "phaseType": "LLE",
-            "phaseEnablePreDeployGate": false,
-            "phaseEnablePostDeployGate": false,
+            "phaseEnablePreDeployGate": False,
+            "phaseEnablePostDeployGate": False,
             "phaseNotificationDg": "dg.sdm-xlr@abc.com"
         },
         {
